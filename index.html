@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brasky AI — Your AI That Actually Gets Stuff Done</title>
+  <meta name="description" content="Brasky handles your emails, calendar, research, and busywork. You handle happy hour.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a0a;
+      color: #fafafa;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    /* Nav */
+    nav {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    
+    .logo span {
+      color: #f97316;
+    }
+    
+    .nav-link {
+      color: #a1a1aa;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    
+    .nav-link:hover {
+      color: #fff;
+    }
+    
+    /* Hero */
+    .hero {
+      padding: 120px 0 80px;
+      text-align: center;
+    }
+    
+    .badge {
+      display: inline-block;
+      background: rgba(249, 115, 22, 0.15);
+      color: #f97316;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 32px;
+      border: 1px solid rgba(249, 115, 22, 0.3);
+    }
+    
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -1.5px;
+    }
+    
+    h1 .highlight {
+      background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      color: #a1a1aa;
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+    
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    
+    .btn-primary {
+      background: #f97316;
+      color: #fff;
+    }
+    
+    .btn-primary:hover {
+      background: #ea580c;
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.12);
+    }
+    
+    /* Features */
+    .features {
+      padding: 80px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+    
+    .feature {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 32px;
+      transition: border-color 0.2s;
+    }
+    
+    .feature:hover {
+      border-color: rgba(249, 115, 22, 0.4);
+    }
+    
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    
+    .feature h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    
+    .feature p {
+      color: #71717a;
+      font-size: 0.95rem;
+    }
+    
+    /* Toast Section */
+    .toast-section {
+      padding: 80px 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    
+    .toast-section h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    
+    .toast-section p {
+      color: #71717a;
+      margin-bottom: 32px;
+      font-size: 1.1rem;
+    }
+    
+    .toast {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(249, 115, 22, 0.15);
+      border: 1px solid rgba(249, 115, 22, 0.3);
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #f97316;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 48px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      color: #52525b;
+      font-size: 0.9rem;
+    }
+    
+    footer a {
+      color: #71717a;
+      text-decoration: none;
+    }
+    
+    footer a:hover {
+      color: #fff;
+    }
+    
+    @media (max-width: 640px) {
+      .hero {
+        padding: 80px 0 60px;
+      }
+      
+      .cta-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-content">
+      <a href="/" class="logo">Brasky<span>AI</span></a>
+      <a href="mailto:bill@braskyai.com" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="badge">🍺 AI that works while you don't</div>
+        <h1>
+          Your AI handles the grind.<br>
+          <span class="highlight">You handle happy hour.</span>
+        </h1>
+        <p>
+          Brasky reads your emails, manages your calendar, does the research, 
+          drafts the docs, and handles the busywork — so you can actually live your life.
+        </p>
+        <div class="cta-group">
+          <a href="mailto:bill@braskyai.com" class="btn btn-primary">Get in Touch</a>
+          <a href="#features" class="btn btn-secondary">See What Brasky Does</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="container">
+        <div class="features-grid">
+          <div class="feature">
+            <div class="feature-icon">📧</div>
+            <h3>Email & Communication</h3>
+            <p>Brasky reads, triages, and drafts responses. You just approve and send — or let Brasky handle it entirely.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">📅</div>
+            <h3>Calendar & Scheduling</h3>
+            <p>Meeting conflicts, timezone math, rescheduling nightmares — Brasky handles the logistics so you show up prepared.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🔍</div>
+            <h3>Research & Analysis</h3>
+            <p>Need market research? Competitive analysis? Brasky digs through the noise and surfaces what matters.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">📝</div>
+            <h3>Writing & Documents</h3>
+            <p>Reports, proposals, summaries, follow-ups — Brasky drafts it all in your voice, ready for your review.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🤖</div>
+            <h3>Automation & Tasks</h3>
+            <p>Repetitive tasks, data entry, reminders, and follow-ups. Brasky never forgets, never gets tired.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🧠</div>
+            <h3>Learns Your Style</h3>
+            <p>The more you work together, the better Brasky gets. Your preferences, your voice, your way of doing things.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="toast-section">
+      <div class="container">
+        <h2>Let Brasky handle it.</h2>
+        <p>Life's too short to spend it in your inbox.</p>
+        <div class="toast">
+          🍻 TO BRASKY!
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Brasky AI · <a href="mailto:bill@braskyai.com">bill@braskyai.com</a></p>
+    </div>
+  </footer>
+</body>
+</html>
